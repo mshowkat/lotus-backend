@@ -2,11 +2,11 @@
 	"name": "lotus-backend",
 	"version": "1.0.0",
 	"description": "lotus backend",
-	"main": "server.js",
+	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "node server.js",
-		"dev": "nodemon server.js"
+		"start": "node index.js",
+		"dev": "nodemon index.js"
 	},
 	"author": "ShIm",
 	"license": "ISC",
@@ -19,8 +19,5 @@
 	},
 	"devDependencies": {
 		"nodemon": "^3.0.1"
-	},
-	"engines": {
-		"node": "18.x"
 	}
 }
