@@ -4,10 +4,24 @@ const commentModel = require("../models/commentModel");
 
 //get all the comments
 //route GET api/comments
-const getAllComments = asyncHandler(async (req, res) => {
-	const comments = await CommentModel.find();
-	res.status(200).json(comments);
+const getUserBasedComments = asyncHandler(async (req, res) => {
+	console.log(req.body, "getAllComments");
+	const comment = await commentModel.findOne({
+		movieId: req.body.movieId,
+		uId: req.body.uId,
+	});
+	res.status(200).json(comment);
 });
+
+// const getOneComment = asyncHandler(async (req, res) => {
+//
+// 	console.log("get one comment", comments);
+// 	if (!comments) {
+// 		res.status(404);
+// 		throw new Error("comments not found");
+// 	}
+// 	res.status(200).json(comments);
+// });
 //get all the comments
 //route GET api/comments
 const getAllMovieComments = asyncHandler(async (req, res) => {
@@ -17,14 +31,14 @@ const getAllMovieComments = asyncHandler(async (req, res) => {
 
 //get one comment
 //route GET /api/comments/:id
-const getComment = asyncHandler(async (req, res) => {
-	const comments = await commentModel.findOne({ movieId: req.params.id });
-	if (!comments) {
-		res.status(404);
-		throw new Error("comments not found");
-	}
-	res.status(200).json(comments);
-});
+// const getComment = asyncHandler(async (req, res) => {
+// 	const comments = await commentModel.findOne({ movieId: req.params.id });
+// 	if (!comments) {
+// 		res.status(404);
+// 		throw new Error("comments not found");
+// 	}
+// 	res.status(200).json(comments);
+// });
 
 //create a comment
 //route POST /api/comments/:id
@@ -80,9 +94,8 @@ const deleteComment = asyncHandler(async (req, res) => {
 });
 
 module.exports = {
-	getAllComments,
+	getUserBasedComments,
 	getAllMovieComments,
-	getComment,
 	createComment,
 	updateComment,
 	deleteComment,
